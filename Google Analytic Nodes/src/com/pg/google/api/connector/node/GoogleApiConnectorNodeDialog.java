@@ -37,6 +37,7 @@ public class GoogleApiConnectorNodeDialog extends StandardNodeDialogPane {
 
     private JTextField txtRefreshToken = new JTextField();
     private DefaultComboBoxModel<String> cbmApiSelection = new DefaultComboBoxModel<String>();
+    private JComboBox<String> cbxApiSelection;
     
     private GoogleApiConnectorNodeConfiguration configuration = new GoogleApiConnectorNodeConfiguration();
     
@@ -47,15 +48,12 @@ public class GoogleApiConnectorNodeDialog extends StandardNodeDialogPane {
     public GoogleApiConnectorNodeDialog() {
     	
     	// Setup user authentication select drop-down:
-    	JComboBox<String> cbxApiSelection = new JComboBox<String>(cbmApiSelection);
+    	cbxApiSelection = new JComboBox<String>(cbmApiSelection);
     	for (String type: configuration.getAuthTypes() ) {
     		cbmApiSelection.addElement(type);
     	}
     	
-    	cbxApiSelection.addActionListener(new TokenChangeAction());
     	
-    	// Setup token refresh field
-    	txtRefreshToken.addFocusListener(new RefreshTokenValidation());
     	
     	// Setup token request button
     	JButton tokenButton = new JButton("<HTML><FONT color=\"#000099\"><U>Click to create user token</U></FONT></HTML>");
@@ -89,15 +87,29 @@ public class GoogleApiConnectorNodeDialog extends StandardNodeDialogPane {
         configuration = new GoogleApiConnectorNodeConfiguration();
         configuration.loadInDialog(settings);
         
-        txtRefreshToken.setText(configuration.getRefreshToken());
-        
         // Default to first item stored as possible Token:
-        if ( txtRefreshToken.getText().isEmpty() ) {
-        	txtRefreshToken.setText(configuration.getTokens()[0]);
+        if ( configuration.getRefreshToken().isEmpty() ) {
+        	configuration.setRefreshToken(configuration.getTokens()[0]);
         }
         
         // Set drop-down to match Token:
-        cbmApiSelection.setSelectedItem(configuration.getAuthTypeFromToken(txtRefreshToken.getText()));
+        cbmApiSelection.setSelectedItem(configuration.getAuthTypeFromToken(configuration.getRefreshToken()));
+        
+        // Set value to match Token:
+        txtRefreshToken.setText(configuration.getRefreshToken());
+        
+        /*
+         * Add Listeners
+         */
+        
+        // Drop-down change listener
+        if ( cbxApiSelection.getActionListeners().length == 0 )
+        	cbxApiSelection.addActionListener(new TokenChangeAction());
+        
+        // Setup token refresh field
+        if ( txtRefreshToken.getFocusListeners().length == 0 )
+        	txtRefreshToken.addFocusListener(new RefreshTokenValidation());
+    	
     }
  
     /**
