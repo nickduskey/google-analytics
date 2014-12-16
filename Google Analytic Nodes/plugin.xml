@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+<plugin>
+   
+   <extension
+         point="org.knime.workbench.repository.nodes">
+      
+      <!-- Google API Connector Node -->
+      <node
+            category-path="/pg/google"
+            factory-class="com.pg.google.api.connector.node.GoogleApiConnectorNodeFactory"
+            id="com.pg.google.api.connector.node.GoogleApiConnectorNodeFactory"/>
+      
+      <!-- Google Analytics API Connector Node -->
+      <node
+            category-path="/pg/google"
+            factory-class="com.pg.google.api.analytics.connector.node.GoogleAnalyticsConnectorFactory"
+            id="com.pg.google.api.analytics.connector.node.GoogleAnalyticsConnectorFactory"/>
+            
+      <!-- Google Analytics Query Node -->
+      <node
+            category-path="/pg/google"
+            factory-class="com.pg.google.api.analytics.query.node.GoogleAnalyticsQueryFactory"
+            id="com.pg.google.api.analytics.query.node.GoogleAnalyticsQueryFactory"/>
+            
+   </extension>
+   
+   <extension
+         point="org.knime.workbench.repository.categories">
+         
+      <!-- Google Category -->
+      <category
+            icon="icons/google-icon.png"
+            level-id="google"
+            locked="true"
+            name="Google"
+            path="/pg/">
+      </category>
+      
+   </extension>
+   
+</plugin>
