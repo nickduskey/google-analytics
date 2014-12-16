@@ -213,9 +213,12 @@ public class GoogleAnalyticsConnectorDialog extends NodeDialogPane {
     	
 		@Override
 		public void actionPerformed(ActionEvent e) {
-			properties.removeAllElements();
 			String selectedName = (String)accounts.getSelectedItem();
+			// Guard statement:
+			if ( selectedName == null ) return;
 			String selectedId = accountMap.get(selectedName);
+			
+			properties.removeAllElements();
 			
 			try {
 				propertyMap = GoogleAnalyticsConnection.getWebProperties(connection, selectedId);
@@ -242,6 +245,9 @@ public class GoogleAnalyticsConnectorDialog extends NodeDialogPane {
 			profiles.removeAllElements();
 			
 			String selectedAccountName = (String)accounts.getSelectedItem();
+			// Guard statement:
+			if ( selectedAccountName == null ) return;
+			
 			String selectedAccountId = accountMap.get(selectedAccountName);
 			
 			String selectedName = (String)properties.getSelectedItem();
@@ -273,7 +279,7 @@ public class GoogleAnalyticsConnectorDialog extends NodeDialogPane {
     	
 		@Override
 		public void focusGained(FocusEvent e) {
-			// TODO Auto-generated method stub
+			
 			
 		}
 
