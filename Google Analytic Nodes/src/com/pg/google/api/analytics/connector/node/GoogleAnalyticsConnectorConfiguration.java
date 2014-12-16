@@ -124,9 +124,7 @@ public class GoogleAnalyticsConnectorConfiguration {
      */
     public GoogleAnalyticsConnection createGoogleAnalyticsConnection(final GoogleApiConnection googleApiConnection)
             throws InvalidSettingsException {
-        if (m_profileId.isEmpty()) {
-            throw new InvalidSettingsException("No profile ID selected");
-        }
+        
         return new GoogleAnalyticsConnection(googleApiConnection, "KNIME-Google-Analytics-Connector", m_profileId, m_timeOut);
     }
 
