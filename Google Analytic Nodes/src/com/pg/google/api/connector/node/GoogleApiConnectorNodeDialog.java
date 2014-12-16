@@ -1,6 +1,7 @@
 
 package com.pg.google.api.connector.node;
 
+import java.awt.Component;
 import java.awt.Desktop;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -88,7 +89,7 @@ public class GoogleApiConnectorNodeDialog extends StandardNodeDialogPane {
         configuration.loadInDialog(settings);
         
         // Default to first item stored as possible Token:
-        if ( configuration.getRefreshToken().isEmpty() ) {
+        if ( configuration.getRefreshToken() == null || configuration.getRefreshToken().isEmpty() ) {
         	configuration.setRefreshToken(configuration.getTokens()[0]);
         }
         
@@ -107,11 +108,22 @@ public class GoogleApiConnectorNodeDialog extends StandardNodeDialogPane {
         	cbxApiSelection.addActionListener(new TokenChangeAction());
         
         // Setup token refresh field
-        if ( txtRefreshToken.getFocusListeners().length == 0 )
+        if ( !containsFocusListener( RefreshTokenValidation.class, txtRefreshToken ) )
         	txtRefreshToken.addFocusListener(new RefreshTokenValidation());
     	
     }
  
+    @SuppressWarnings("rawtypes")
+	private boolean containsFocusListener ( Class listener, Component component ) {
+    	if ( component.getFocusListeners().length == 0 ) return false;
+    	
+    	for ( FocusListener fl : component.getFocusListeners() ) {
+    		if ( fl.getClass() == listener ) return true;
+    	}
+    	
+    	return false;
+    }
+    
     /**
      * RefreshTokenValidation
      */
