@@ -46,8 +46,6 @@ public class GoogleApiConnection {
     	
         if ( StringUtils.isNotEmpty(m_clientId) && StringUtils.isNotEmpty(m_clientSecret) && StringUtils.isNotEmpty(m_refreshToken) ) {
         	createFromOAuth(m_clientId, m_clientSecret, m_refreshToken);
-        } else {
-        	throw new InvalidSettingsException("oAuth parameters are not set");
         }
         
     }
@@ -145,7 +143,6 @@ public class GoogleApiConnection {
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append("Client id:\n" + m_clientId + "\n\n");
-        sb.append("Client secret:\n" + m_clientSecret + "\n\n");
         sb.append("Client refresh token:\n" + m_refreshToken + "\n\n");
         
         return sb.toString();
