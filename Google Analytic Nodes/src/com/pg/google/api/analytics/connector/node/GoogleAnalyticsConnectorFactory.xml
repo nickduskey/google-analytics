@@ -2,19 +2,25 @@
 <knimeNode icon="./googleanalyticsconnector.png" type="Manipulator"
 	xmlns="http://knime.org/node/v2.8" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://knime.org/node/v2.8 http://knime.org/node/v2.8.xsd">
-	<name>Google Analytics Connector (PG)</name>
+	<name>Google Analytics Connector (P&amp;G)</name>
 	<shortDescription>Create a connection to the Google Analytics API.</shortDescription>
 	<fullDescription>
 		<intro>
 			Create a connection to the Google Analytics API.
+			
 			<p>
-			For details see: <a href="https://developers.google.com/analytics/resources/concepts/gaConceptsAccounts">developers.google.com/analytics/resources/concepts/gaConceptsAccounts</a>.
+			Use "Get" buttons to navigate Account, WebProperty, View hierarchy to find the desired Profile ID - or if ID is already known - just input ID into Profile ID field.
+			</p>
+			
+			<p>
+			View basic tutorial for Google Analytic Nodes on PGTube at <a href="http://pgtube.pg.com/pgtube/play.php?id=63625-22bc7d20d2a116d6">http://pgtube.pg.com/pgtube/play.php?id=63625-22bc7d20d2a116d6</a>
 			</p>
 		</intro>
 		<option name="Account">The account.</option>
 		<option name="Webproperty">The webproperty.</option>
 		<option name="Profile">The profile.</option>
 		<option name="Profile ID">The profile ID that will be used for this connection.</option>
+		<option name="Time Out">(Advanced) The amount of time in minutes system will wait for results.  If extremely large data sets or slow network this value can be increased.</option>
 	</fullDescription>
 	<ports>
 		<inPort index="0" name="Google API Connection">The Google API connection that will be used.</inPort>

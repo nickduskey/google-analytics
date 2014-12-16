@@ -2,24 +2,22 @@
 <knimeNode icon="./googleapiconnector.png" type="Source"
 	xmlns="http://knime.org/node/v2.8" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://knime.org/node/v2.8 http://knime.org/node/v2.8.xsd">
-	<name>Google API Connector (PG)</name>
+	<name>Google API Connector (P&amp;G)</name>
 	<shortDescription>Create a connection to access various Google APIs.</shortDescription>
 	<fullDescription>
 		<intro>
-	Creates a connection to access various Google APIs.
-	<p>
-	You will need to create a project at <a href="https://console.developers.google.com/project">console.developers.google.com</a>
-	. To get your credentials you have to go to 'Credentials' → 'Create new	Client ID' and create a service account.
-	</p>
-	Please note: The specific Google API you want to use has to be enabled
-	under 'APIs'.
+	
+		Creates a connection to access various Google APIs (Google Analytics, Adwords, etc.).
+	
+		<p>
+			View basic tutorial for Google Analytic Nodes on PGTube at <a href="http://pgtube.pg.com/pgtube/play.php?id=63625-22bc7d20d2a116d6">http://pgtube.pg.com/pgtube/play.php?id=63625-22bc7d20d2a116d6</a>
+		</p>
+		
 		</intro>
-		<option name="Service account email">Email address of the service account.</option>
-		<option name="Key file location">Path to the private key file.</option>
-		<option name="Scopes">The scopes that will be granted for this connection.</option>
+		<option name="Credentials">Pre-created credential options that can be used for data access.</option>
+		<option name="User Token">User refresh token used for access.</option>
 	</fullDescription>
 	<ports>
-		<outPort index="0" name="Google API Connection">A connection that can be used to
-			access various Google APIs.</outPort>
+		<outPort index="0" name="Google API Connection">A connection that can be used to access various Google APIs.</outPort>
 	</ports>
 </knimeNode>

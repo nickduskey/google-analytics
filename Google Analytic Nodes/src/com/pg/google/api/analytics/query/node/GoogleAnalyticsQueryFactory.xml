@@ -7,6 +7,10 @@
 	<fullDescription>
 		<intro>
 			Execute a query to retrieve data from the Google Analytics API.
+			
+			<p>
+			View basic tutorial for Google Analytic Nodes on PGTube at <a href="http://pgtube.pg.com/pgtube/play.php?id=63625-22bc7d20d2a116d6">http://pgtube.pg.com/pgtube/play.php?id=63625-22bc7d20d2a116d6</a>
+			</p>
 		</intro>
 		<option name="Dimensions">
 			<i>(Optional)</i>
