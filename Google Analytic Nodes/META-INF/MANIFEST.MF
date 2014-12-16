@@ -1,7 +1,7 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: P&G Google Analytics Nodes for KNIME Workbench
-Bundle-SymbolicName: com.pg.google.api.analytics;singleton:=true
+Bundle-SymbolicName: com.pg.google.analytics;singleton:=true
 Bundle-Version: 1.0.13
 Bundle-ClassPath: googleapiconnector.jar
 Bundle-Vendor: P&G, eBusiness
