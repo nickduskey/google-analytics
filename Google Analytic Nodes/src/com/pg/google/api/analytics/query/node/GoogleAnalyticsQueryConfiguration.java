@@ -314,12 +314,14 @@ public class GoogleAnalyticsQueryConfiguration {
      */
     public String getSegmentWithPrefix() {
     	if ( StringUtils.isEmpty(m_segment)) return "";
-    	
+    	return "gaid::" + m_segment;
+    	/*
         if (m_segment.matches("-[0-9]+")) {
             return "gaid::" + m_segment;
         } else {
             return "dynamic::" + prependPrefixToFilters(m_segment);
         }
+        */
     }
 
     /**
