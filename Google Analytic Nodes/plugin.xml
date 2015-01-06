@@ -32,7 +32,7 @@
       <category
             icon="icons/google-icon.png"
             level-id="google"
-            locked="true"
+            locked="false"
             name="Google"
             path="/pg/">
       </category>
@@ -41,7 +41,7 @@
       <category
             icon="icons/ganalytics-icon.png"
             level-id="ganalytics"
-            locked="true"
+            locked="false"
             name="Google Analytics"
             path="/pg/google/">
       </category>
