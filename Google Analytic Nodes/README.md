@@ -1,6 +1,7 @@
 P&G Google API Nodes
 ====
-Based on KNIME Labs Google API Node implementations (http://www.knime.com/blog/querying-google-analytics-in-knime)
+Based on KNIME Labs Google API Node implementations (http://www.knime.com/blog/querying-google-analytics-in-knime).  
+Updated to use oAuth instead of service accounts.
 
 
 KNIME
