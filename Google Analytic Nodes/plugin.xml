@@ -13,13 +13,13 @@
       
       <!-- Google Analytics API Connector Node -->
       <node
-            category-path="/pg/google"
+            category-path="/pg/google/ganalytics"
             factory-class="com.pg.google.api.analytics.connector.node.GoogleAnalyticsConnectorFactory"
             id="com.pg.google.api.analytics.connector.node.GoogleAnalyticsConnectorFactory"/>
             
       <!-- Google Analytics Query Node -->
       <node
-            category-path="/pg/google"
+            category-path="/pg/google/ganalytics"
             factory-class="com.pg.google.api.analytics.query.node.GoogleAnalyticsQueryFactory"
             id="com.pg.google.api.analytics.query.node.GoogleAnalyticsQueryFactory"/>
             
@@ -35,6 +35,15 @@
             locked="true"
             name="Google"
             path="/pg/">
+      </category>
+ 
+       <!-- Google Analytics Category -->
+      <category
+            icon="icons/ganalytics-icon.png"
+            level-id="ganalytics"
+            locked="true"
+            name="Google Analytics"
+            path="/pg/google/">
       </category>
       
    </extension>
