@@ -1,49 +1,29 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<?eclipse version="3.0"?>
-<plugin>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<?eclipse version="3.0"?><plugin>
    
-   <extension
-         point="org.knime.workbench.repository.nodes">
+   <extension point="org.knime.workbench.repository.nodes">
       
       <!-- Google API Connector Node -->
-      <node
-            category-path="/pg/google"
-            factory-class="com.pg.google.api.connector.node.GoogleApiConnectorNodeFactory"
-            id="com.pg.google.api.connector.node.GoogleApiConnectorNodeFactory"/>
+      <node category-path="/pg/google" factory-class="com.pg.google.api.connector.node.GoogleApiConnectorNodeFactory" id="com.pg.google.api.connector.node.GoogleApiConnectorNodeFactory"/>
       
       <!-- Google Analytics API Connector Node -->
-      <node
-            category-path="/pg/google/ganalytics"
-            factory-class="com.pg.google.api.analytics.connector.node.GoogleAnalyticsConnectorFactory"
-            id="com.pg.google.api.analytics.connector.node.GoogleAnalyticsConnectorFactory"/>
+      <node category-path="/pg/google/ganalytics" factory-class="com.pg.google.api.analytics.connector.node.GoogleAnalyticsConnectorFactory" id="com.pg.google.api.analytics.connector.node.GoogleAnalyticsConnectorFactory"/>
             
       <!-- Google Analytics Query Node -->
-      <node
-            category-path="/pg/google/ganalytics"
-            factory-class="com.pg.google.api.analytics.query.node.GoogleAnalyticsQueryFactory"
-            id="com.pg.google.api.analytics.query.node.GoogleAnalyticsQueryFactory"/>
-            
-   </extension>
+      <node category-path="/pg/google/ganalytics" factory-class="com.pg.google.api.analytics.query.node.GoogleAnalyticsQueryFactory" id="com.pg.google.api.analytics.query.node.GoogleAnalyticsQueryFactory"/>
+      
+      <!-- Profile List Node -->      
+   	  <node category-path="/pg/google/ganalytics" factory-class="com.pg.google.api.anaytics.profilelist.node.ProfileListNodeFactory" id="com.pg.google.api.anaytics.profilelist.node.ProfileListNodeFactory"/>
+</extension>
    
-   <extension
-         point="org.knime.workbench.repository.categories">
+   <extension point="org.knime.workbench.repository.categories">
          
       <!-- Google Category -->
-      <category
-            icon="icons/google-icon.png"
-            level-id="google"
-            locked="false"
-            name="Google"
-            path="/pg/">
+      <category icon="icons/google-icon.png" level-id="google" locked="false" name="Google" path="/pg/">
       </category>
  
        <!-- Google Analytics Category -->
-      <category
-            icon="icons/ganalytics-icon.png"
-            level-id="ganalytics"
-            locked="false"
-            name="Google Analytics"
-            path="/pg/google/">
+      <category icon="icons/ganalytics-icon.png" level-id="ganalytics" locked="false" name="Google Analytics" path="/pg/google/">
       </category>
       
    </extension>
