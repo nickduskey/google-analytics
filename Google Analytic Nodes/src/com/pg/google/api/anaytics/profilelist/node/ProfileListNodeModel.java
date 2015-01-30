@@ -68,6 +68,7 @@ public class ProfileListNodeModel extends NodeModel {
  	    	
         	String accountId = profile.getAccountId();
         	String propertyId = profile.getWebPropertyId();
+        	String internalPropertyId = profile.getInternalWebPropertyId();
         	String profileId = profile.getId();
         	String name = profile.getName();
         	String siteUrl = profile.getWebsiteUrl();
@@ -80,6 +81,7 @@ public class ProfileListNodeModel extends NodeModel {
         	
         	cells.add(new StringCell(def(accountId)));
         	cells.add(new StringCell(def(propertyId)));
+        	cells.add(new StringCell(def(internalPropertyId)));
         	cells.add(new StringCell(def(profileId)));
         	cells.add(new StringCell(def(name)));
         	cells.add(new StringCell(def(siteUrl)));
@@ -167,6 +169,7 @@ public class ProfileListNodeModel extends NodeModel {
     	List<DataColumnSpec> colSpecs = new ArrayList<DataColumnSpec>();
     	colSpecs.add(new DataColumnSpecCreator("Account ID", StringCell.TYPE).createSpec());
     	colSpecs.add(new DataColumnSpecCreator("WebProperty ID", StringCell.TYPE).createSpec());
+    	colSpecs.add(new DataColumnSpecCreator("Internal WebProperty ID", StringCell.TYPE).createSpec());
     	colSpecs.add(new DataColumnSpecCreator("Profile ID", StringCell.TYPE).createSpec());
     	colSpecs.add(new DataColumnSpecCreator("Name", StringCell.TYPE).createSpec());
     	colSpecs.add(new DataColumnSpecCreator("Site Url", StringCell.TYPE).createSpec());
