@@ -107,6 +107,30 @@ public class GoogleAnalyticsConnection {
     	return map;
     }
     
+    public static List<Profile> getAllProfiles(final GoogleApiConnection connection) throws IOException {
+    	Analytics analytics =
+                new Analytics.Builder(connection.getHttpTransport(), connection.getJsonFactory(),
+                        connection.getCredential()).setApplicationName("KNIME-Profiles-Scan").build();
+        
+    	int currentIndex = 1;
+    	com.google.api.services.analytics.Analytics.Management.Profiles.List profileQuery = analytics.management().profiles().list("~all", "~all").setStartIndex(currentIndex);
+    	Profiles profileResults = profileQuery.execute();
+    	List<Profile> profiles = new ArrayList<Profile>();
+    	
+    	while ( profileResults != null && profileResults.getItems() != null && profileResults.getItems().size() > 0 && currentIndex < profileResults.getTotalResults() ) {
+			
+			for ( Profile profileItem : profileResults.getItems()  ) {
+				profiles.add(profileItem);
+			}
+			
+			currentIndex = currentIndex + profileResults.getItems().size();
+			profileQuery.setStartIndex(currentIndex);
+			profileResults = profileQuery.execute();
+		}
+    	
+    	return profiles;
+    }
+    
     public static Map<String, String> getProfile( final GoogleApiConnection connection, String profileId ) throws IOException {
     	Map<String, String> map = new HashMap<>();
     	
