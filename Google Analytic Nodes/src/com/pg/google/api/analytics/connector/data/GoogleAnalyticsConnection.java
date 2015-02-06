@@ -306,8 +306,8 @@ public class GoogleAnalyticsConnection {
 				if ( ioexc instanceof GoogleJsonResponseException) {
 					GoogleJsonResponseException e = (GoogleJsonResponseException)ioexc;
 					String reason = e.getDetails().getErrors().get(0).getReason();
-					LOGGER.error(reason);
-					LOGGER.error(e.getDetails().getMessage());
+					LOGGER.debug(reason);
+					LOGGER.debug(e.getDetails().getMessage());
 					
 					// Likely security exception so no reason to continue trying:
 					if ( !("rateLimitExceeded".equals(reason) || "dailyLimitExceeded".equals(reason) || "userRateLimitExceeded".equals(reason) || "backendError".equals(reason) ))
@@ -326,7 +326,10 @@ public class GoogleAnalyticsConnection {
 		} while ( gaData == null && attempts++ <= MAX_ATTEMPTS && exception != null );
 		
 		// Was unable to recover :(
-		if (exception != null ) throw exception;
+		if (exception != null ) {
+			LOGGER.error("Unable to recover from query error: " + exception.getMessage());
+			throw exception;
+		}
 		
 		return gaData;
 	}
