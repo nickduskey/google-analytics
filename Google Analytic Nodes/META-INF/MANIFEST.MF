@@ -2,18 +2,18 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: P&G Google Analytics Nodes for KNIME Workbench
 Bundle-SymbolicName: com.pg.google.analytics;singleton:=true
-Bundle-Version: 1.0.20
-Bundle-ClassPath: googleapiconnector.jar
+Bundle-Version: 1.2.0
+Bundle-ClassPath: googleapiconnector.jar,
+ lib/google-api-services-analytics-v3-rev111-1.19.1.jar
 Bundle-Vendor: Procter & Gamble, eBusiness Analytics
 Require-Bundle: org.eclipse.core.runtime,
  org.knime.workbench.core,
  org.knime.workbench.repository,
  org.knime.base,
- com.google.api;bundle-version="1.17.0",
- com.google.api.services.analytics;bundle-version="3.0.0",
  org.apache.commons.lang;bundle-version="2.6.0",
  com.pg.knime.vault;bundle-version="1.0.0",
- com.pg.knime.foundation;bundle-version="1.0.0"
+ com.pg.knime.foundation;bundle-version="1.0.0",
+ com.pg.google.api;bundle-version="1.0.0"
 Export-Package: com.pg.google.api.analytics.connector.data,
  com.pg.google.api.analytics.connector.node,
  com.pg.google.api.analytics.query.node,
