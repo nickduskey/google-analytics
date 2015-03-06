@@ -30,7 +30,7 @@ public class GoogleApiConnectorNodeConfiguration {
         
     private static final String DEFAULT_AUTH_TYPE = "User Specified";
     
-    public static final String[] SCOPES = new String[] {"https://www.googleapis.com/auth/analytics.readonly", "https://www.googleapis.com/auth/analytics"};
+    public static final String[] SCOPES = new String[] {"https://www.googleapis.com/auth/analytics.readonly"};
     
     private DefaultVault vault;
     
