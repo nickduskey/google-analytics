@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.security.GeneralSecurityException;
 import java.util.ArrayList;
 
+import org.apache.commons.lang.StringUtils;
 import org.knime.core.node.InvalidSettingsException;
 import org.knime.core.node.NodeSettingsRO;
 import org.knime.core.node.NodeSettingsWO;
@@ -132,6 +133,8 @@ public class GoogleApiConnectorNodeConfiguration {
      */
     public GoogleApiConnection createGoogleApiConnection() throws InvalidSettingsException {
         
+    	if ( StringUtils.isEmpty(getRefreshToken())) throw new InvalidSettingsException("Refresh token is required.  Please configure node.");
+    	
     	try {
             return new GoogleApiConnection(getClientId(), getClientSecret(), getRefreshToken());
         } catch (GeneralSecurityException | IOException e) {
