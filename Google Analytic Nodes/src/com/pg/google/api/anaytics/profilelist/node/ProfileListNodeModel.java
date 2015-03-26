@@ -19,6 +19,7 @@ import org.knime.core.node.CanceledExecutionException;
 import org.knime.core.node.ExecutionContext;
 import org.knime.core.node.ExecutionMonitor;
 import org.knime.core.node.InvalidSettingsException;
+import org.knime.core.node.NodeLogger;
 import org.knime.core.node.NodeModel;
 import org.knime.core.node.NodeSettingsRO;
 import org.knime.core.node.NodeSettingsWO;
@@ -40,6 +41,8 @@ import com.google.api.services.analytics.model.Profile;
  */
 public class ProfileListNodeModel extends NodeModel {
     
+	NodeLogger LOGGER = NodeLogger.getLogger(ProfileListNodeModel.class);
+	
 	/**
      * Constructor for the node model.
      */
@@ -56,7 +59,15 @@ public class ProfileListNodeModel extends NodeModel {
     protected PortObject[] execute(PortObject[] inObjects, ExecutionContext exec) throws Exception {
         
     	GoogleApiConnectionPortObjectSpec inSpec = (GoogleApiConnectionPortObjectSpec)inObjects[0].getSpec();
-        List<Profile> profiles = GoogleAnalyticsConnection.getAllProfiles(inSpec.getGoogleApiConnection());
+        List<Profile> profiles = null;
+        
+        try { 
+        	profiles = GoogleAnalyticsConnection.getAllProfiles(inSpec.getGoogleApiConnection());
+        } catch ( IOException exc ) {
+        	LOGGER.warn ( "Unable to get profile list... trying again.");
+        	Thread.sleep(2000);
+        	profiles = GoogleAnalyticsConnection.getAllProfiles(inSpec.getGoogleApiConnection());
+        }
     	
         DataTableSpec outSpec = createSpec();
         BufferedDataContainer outContainer = exec.createDataContainer(outSpec);
