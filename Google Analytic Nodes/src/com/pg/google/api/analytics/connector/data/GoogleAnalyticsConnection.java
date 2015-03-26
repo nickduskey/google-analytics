@@ -68,7 +68,7 @@ public class GoogleAnalyticsConnection {
     	Accounts accounts = analytics.management().accounts().list().execute();
     	if (accounts!=null && accounts.getTotalResults() > 0 )
 	    	for ( Account account : accounts.getItems() ) {
-	    		map.put(account.getName(), account.getId() );
+	    		map.put(account.getName() + " (UA-" + account.getId()+")", account.getId() );
 	    	}
     	
     	return map;
@@ -84,7 +84,7 @@ public class GoogleAnalyticsConnection {
     	Webproperties properties = analytics.management().webproperties().list(accountId).execute();
     	if (properties!=null && properties.getTotalResults() > 0)
 	    	for ( Webproperty property : properties.getItems() ) {
-	    		map.put(property.getName(), property.getId() );
+	    		map.put(property.getName() + " ("+ property.getId() +")", property.getId() );
 	    	}
     	
     	return map;
