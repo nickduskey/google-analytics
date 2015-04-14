@@ -143,7 +143,7 @@ public class GoogleAnalyticsConnection {
     	// Try to resolve Profile information via Data query:
     	Get query = analytics.data().ga().get("ga:"+profileId, sdf.format(new Date()), sdf.format(new Date()), "ga:pageviews");
     	GaData response = query.execute();
-    	if ( response != null && response.getTotalResults() > 0 ) {
+    	if ( response != null && response.getTotalResults() >= 0 ) {
     		ProfileInfo profileInfo = response.getProfileInfo();
         	String name = profileInfo.getProfileName();
         	map.put(name, profileId);	
